@@ -1,7 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Axios } from "./Axios";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    Axios.get("?query=xbox&country=US").then((res) => {
+      console.log(res.data);
+      console.log("first");
+    }, []);
+  });
   return (
     <div className="App">
       <header className="App-header">
