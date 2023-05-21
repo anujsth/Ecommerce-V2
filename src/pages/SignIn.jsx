@@ -54,8 +54,8 @@ const SignIn = () => {
   }, [loggedIn]);
 
   return (
-    <div className="signinImage relative flex flex-col items-center ">
-      {/* <img src={background} className="absolute top-5 left-7 h-25 w-40" /> */}
+    <div className="relative flex flex-col items-center signinImage ">
+      {/* <img src={background} className="absolute w-40 top-5 left-7 h-25" /> */}
       <div className=" bg-black bg-opacity-80 h-[41.25rem] w-[30.688rem] mt-[10rem]">
         <form
           action=""
@@ -78,10 +78,10 @@ const SignIn = () => {
             onChange={inputPasswordHandler}
           />
           <Button title="Sign In" />
-          {error && <p className="text-red-500 text-xl text-center">{error}</p>}
+          {error && <p className="text-xl text-center text-red-500">{error}</p>}
           <p className="text-[#8c8c8c] text-base mt-[4.4rem]">
             New to Shopify?
-            <Link to="/signup" className="text-white text-lg pl-1">
+            <Link to="/signup" className="pl-1 text-lg text-white">
               Sign up Now
             </Link>
           </p>

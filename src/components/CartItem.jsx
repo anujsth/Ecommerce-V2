@@ -12,7 +12,7 @@ const CartItem = ({ product, setTotalCost }) => {
   }, [product]);
   return (
     <div className="flex  mt-10">
-      <div className="w-[40%]  flex items-center">
+      <div className="w-[35%] md:w-[40%] flex flex-col lg:flex-row justify-center m-auto">
         <img
           src={product.image}
           alt=""
@@ -23,9 +23,15 @@ const CartItem = ({ product, setTotalCost }) => {
           <p className="text-red-500">{product.category}</p>
         </div>
       </div>
-      <div className=" w-[16%] m-auto">{product.quantity}</div>
-      <div className="w-[16%] m-auto">${product.cost}</div>
-      <div className="w-[16%] m-auto">${product.quantity * product.cost}</div>
+      <div className=" w-[16%] m-auto">
+        <p className="text-center">{product.quantity}</p>
+      </div>
+      <div className="w-[16%] m-auto">
+        <p className="text-center">${product.cost}</p>
+      </div>
+      <div className="w-[16%] m-auto">
+        <p className="text-center">${product.quantity * product.cost}</p>
+      </div>
       <div className="w-[5rem] md:w-[8%] m-auto bg-red-500 text-white rounded-lg py-1 cursor-pointer hover:scale-105">
         <p
           className="font-semibold text-center"

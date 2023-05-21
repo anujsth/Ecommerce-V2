@@ -20,9 +20,9 @@ const LandingPage = ({ scrollFunc }) => {
       </div>
       <div className="mr-[16rem] max-[1200px]:hidden">
         <div className="border-b-2 border-gray-400 pb-8 w-[18rem] flex justify-center">
-          <p className="text-white text-5xl ">01</p>
+          <p className="text-5xl text-white ">01</p>
         </div>
-        <p className="mt-8 text-white text-2xl ml-5">CONQUER WITH STYLE</p>
+        <p className="mt-8 ml-5 text-2xl text-white">CONQUER WITH STYLE</p>
       </div>
     </div>
   );

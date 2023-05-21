@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import Card from "../components/Card";
 import { useNavigate } from "react-router-dom";
 import CardShimmer from "../components/CardShimmer";
+import "../assets/styles/style.css";
 
 const Shop = ({ products, category, loading }) => {
   const navigate = useNavigate();
@@ -14,8 +15,8 @@ const Shop = ({ products, category, loading }) => {
   return (
     <>
       <div className="w-[100%] mt-12 flex flex-col items-center mx-0 mb-6">
-        <h1 className="text-black text-4xl font-bold">
-          {category.toUpperCase()}
+        <h1 className="text-black text-4xl font-bold pb-2 relative shadow-2xl">
+          <span className="category ">{category.toUpperCase()}</span>
         </h1>
 
         {loading ? (
