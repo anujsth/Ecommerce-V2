@@ -12,6 +12,8 @@ const Nav = ({ scrolled, mainUrl, welcomeText }) => {
   const { wishItems } = useSelector((state) => state.wishList);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const firstWord = welcomeText?.slice(0, 1);
+  const finalName = firstWord?.toUpperCase() + welcomeText?.slice(1);
   return (
     <div
       className={`flex ${
@@ -35,19 +37,12 @@ const Nav = ({ scrolled, mainUrl, welcomeText }) => {
             Home
           </p>
         </Link>
-
-        {/* <p
-          className={`${
-            mainUrl ? "text-white" : "text-black"
-          } font-semibold ml-8 cursor-pointer`}
-        >
-          Collections
-        </p> */}
       </div>
-      <div className="flex ">
+      <div className="flex items-center">
         {welcomeText && (
-          <p className="text-white mr-6 hidden md:block font-medium">
-            {welcomeText}
+          <p className="text-white mr-6 hidden md:visible font-medium md:flex justify-center items-center">
+            Welcome,{" "}
+            <span className="text-blue-500 ml-2 text-xl">{finalName}</span>
           </p>
         )}
         <GoSignOut
@@ -88,12 +83,6 @@ const Nav = ({ scrolled, mainUrl, welcomeText }) => {
             </span>
           </div>
         </Link>
-
-        <BsFillSearchHeartFill
-          className={`${
-            mainUrl ? "text-white" : "text-black"
-          } text-2xl ml-8 cursor-pointer hidden md:block`}
-        />
       </div>
     </div>
   );

@@ -46,6 +46,7 @@ const Main = () => {
         setIsScrolled(false);
       }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -53,11 +54,7 @@ const Main = () => {
   return (
     <>
       <div className="w-full h-full main-page">
-        <Nav
-          scrolled={isScrolled}
-          mainUrl={mainUrl}
-          welcomeText={`Welcome , ${username}`}
-        />
+        <Nav scrolled={isScrolled} mainUrl={mainUrl} welcomeText={username} />
         <div className="h-[100vh] w-full">
           <LandingPage scrollFunc={handleClick} />
         </div>

@@ -12,7 +12,7 @@ const CartItem = ({ product, setTotalCost }) => {
   }, [product]);
   return (
     <div className="flex  mt-10">
-      <div className="w-[35%] md:w-[40%] flex flex-col lg:flex-row justify-center m-auto">
+      <div className="w-[35%] md:w-[40%] flex flex-col lg:flex-row justify-start m-auto">
         <img
           src={product.image}
           alt=""

@@ -1,26 +1,32 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "./pages/Main";
 import Product from "./pages/Product";
 import Cart from "./pages/Cart";
 import WishList from "./pages/WishList";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import { useSelector } from "react-redux";
+import { lazy, Suspense } from "react";
 import Protected from "./components/Protected";
+
+const Main = lazy(() => import("./pages/Main"));
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <Protected>
-        <Main />
+        <Suspense
+          fallback={
+            <div className="h-[100vh] w-[100vw] bg-black flex justify-center items-center">
+              <p className="text-white text-3xl">⌛Loading...</p>
+            </div>
+          }
+        >
+          <Main />
+        </Suspense>
       </Protected>
     ),
   },
-  // {
-  //   path: "/",
-  //   element: <Main />,
-  // },
+
   {
     path: "/product/:id",
     element: (

@@ -8,7 +8,7 @@ import {
 const CardShimmer = () => {
   return (
     <div className="h-[28rem] w-[23rem]">
-      <ShimmerThumbnail height={300} width={"auto"} />
+      <ShimmerThumbnail height={300} />
       <ShimmerTitle line={1} center />
       <div className="flex justify-between">
         <div className="w-[30%] flex flex-col">

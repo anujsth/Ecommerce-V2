@@ -5,6 +5,9 @@ import { setTotalCostCart } from "../Redux/features/cartSlice";
 import emailjs from "@emailjs/browser";
 import Kahlti from "../Khalti/Kahlti";
 import { FaSkullCrossbones } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -36,7 +39,7 @@ const Cart = () => {
     dispatch(setTotalCostCart(sum));
   }, [totalCost]);
   return (
-    <div className="h-[100%] w-full flex flex-col md:flex-row">
+    <div className="h-[100%] w-full flex flex-col md:flex-row relative">
       <div className="md:w-[60%] h-[80%] mx-[2rem]  mt-[5rem] md:ml-[7rem] md:pr-16 ">
         <div className="flex justify-between pb-8 border-b-2 border-gray-400">
           <p className="text-2xl font-medium md:text-3xl">Shopping Cart</p>
@@ -107,6 +110,12 @@ const Cart = () => {
         </div>
         {cartItems.length !== 0 && <Kahlti total={totalCost && totalCost} />}
       </div>
+      <Link
+        to="/"
+        className="absolute bottom-16 left-12 md:left-20 flex text-4xl text-gray-500 mr-2 hover:text-green-600  hover:scale-110 transition-all"
+      >
+        <BsFillArrowLeftCircleFill className="" />
+      </Link>
     </div>
   );
 };
