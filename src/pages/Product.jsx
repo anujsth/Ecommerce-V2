@@ -1,18 +1,12 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import { setCartQuantity, setItemCart } from "../Redux/features/cartSlice";
 import Nav from "../components/Nav";
 import ProductItem from "../components/ProductItem";
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import {
-  setCartQuantity,
-  setItemCart,
-  setItemQuantity,
-} from "../Redux/features/cartSlice";
-import { ToastContainer, toast } from "react-toastify";
 
 const Product = () => {
-  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [itemNumber, setItemNumber] = useState(0);
   const { cartItems } = useSelector((state) => state.cart);

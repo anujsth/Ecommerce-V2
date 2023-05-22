@@ -1,35 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import CartItem from "../components/CartItem";
 import { useEffect, useState } from "react";
-import { setTotalCostCart } from "../Redux/features/cartSlice";
-import emailjs from "@emailjs/browser";
-import Kahlti from "../Khalti/Kahlti";
-import { FaSkullCrossbones } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { FaSkullCrossbones } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Kahlti from "../Khalti/Kahlti";
+import { setTotalCostCart } from "../Redux/features/cartSlice";
+import CartItem from "../components/CartItem";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const [totalCost, setTotalCost] = useState([]);
   const { cartItems, itemQuantity } = useSelector((state) => state.cart);
-  //   const [val, setVal] = useState(0);
+
   const { totalCostCart } = useSelector((state) => state.cart);
 
-  function sendEmail(e) {
-    e.preventDefault();
-
-    emailjs
-      .sendForm("gmail", "template_9anhvxk", e.target, "jIXX3VW0Eim970WsA")
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-  }
   useEffect(() => {
     let sum = 0;
     totalCost !== [] &&
@@ -102,7 +86,7 @@ const Cart = () => {
             Apply
           </button>
         </div>
-        <div className="flex justify-between mx-12 mt-8">
+        <div className="flex justify-between mx-12 mt-8 mb-8">
           <p className="text-2xl text-white">Total Cost </p>
           <p className="text-2xl text-blue-300">
             Rs. {totalCostCart && totalCostCart.toFixed(2)}

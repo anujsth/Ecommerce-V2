@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Axios } from "../Axios";
+import { fetchAllData } from "../Redux/features/productDetailSlice";
 import "../assets/styles/style.css";
+import LandingPage from "../components/LandingPage";
 import Nav from "../components/Nav";
 import Shop from "./Shop";
-import LandingPage from "../components/LandingPage";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllData } from "../Redux/features/productDetailSlice";
-import { Navigate } from "react-router-dom";
 
 const Main = () => {
   const shopRef = useRef();

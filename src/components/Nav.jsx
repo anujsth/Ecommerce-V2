@@ -1,6 +1,6 @@
 import "../assets/styles/style.css";
 import logo from "../assets/images/logo.png";
-import { BsFillBagHeartFill, BsFillSearchHeartFill } from "react-icons/bs";
+import { BsFillBagHeartFill } from "react-icons/bs";
 import { GoSignOut } from "react-icons/go";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,7 +41,7 @@ const Nav = ({ scrolled, mainUrl, welcomeText }) => {
       <div className="flex items-center">
         {welcomeText && (
           <p className="text-white mr-6 hidden md:visible font-medium md:flex justify-center items-center">
-            Welcome,{" "}
+            Welcome{" "}
             <span className="text-blue-500 ml-2 text-xl">{finalName}</span>
           </p>
         )}

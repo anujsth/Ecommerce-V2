@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { setItemQuantity } from "../Redux/features/cartSlice";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { removeWishItems, setWishItems } from "../Redux/features/wishListSlice";
 import { useEffect, useState } from "react";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
+import { removeWishItems, setWishItems } from "../Redux/features/wishListSlice";
 
 const Card = ({ product, onClick, loading }) => {
   const [toggle, setToggle] = useState(false);

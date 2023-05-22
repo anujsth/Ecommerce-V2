@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-// import {
-//   logIn,
-//   userPasswordHandler,
-//   userSignInUsernameorEmail,
-// } from "../redux/features/authenticationSlice";
 import "../assets/styles/signIn.css";
 import Button from "../components/Button";
 import { setUserDetail, storeDetail } from "../Redux/features/userSlice";
 
 const SignUp = () => {
-  //   const { error, userEmailUsername } = useSelector(
-  //     (state) => state.authentication
-  //   );
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [details, setDetails] = useState({
@@ -53,7 +44,6 @@ const SignUp = () => {
 
   return (
     <div className="signinImage relative flex flex-col items-center ">
-      {/* <img src={background} className="absolute top-5 left-7 h-25 w-40" /> */}
       <div className=" bg-black bg-opacity-80 h-[41.25rem] w-[30.688rem] mt-[10rem]">
         <form
           action=""

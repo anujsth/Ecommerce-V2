@@ -7,7 +7,7 @@ const Kahlti = ({ total }) => {
   console.log(total);
   return (
     <div
-      className="cursor-pointer mt-8 m-auto w-[10rem] rounded bg-blue-700 py-2.5"
+      className="cursor-pointer mt-12 m-auto w-[10rem] rounded bg-blue-700 py-2.5"
       onClick={() => {
         total !== 0
           ? checkout.show({ amount: (total * 100).toFixed() })

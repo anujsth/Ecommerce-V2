@@ -1,8 +1,7 @@
-import { useDispatch } from "react-redux";
-import Card from "../components/Card";
 import { useNavigate } from "react-router-dom";
-import CardShimmer from "../components/CardShimmer";
 import "../assets/styles/style.css";
+import Card from "../components/Card";
+import CardShimmer from "../components/CardShimmer";
 
 const Shop = ({ products, category, loading }) => {
   const navigate = useNavigate();
