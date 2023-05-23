@@ -1,11 +1,11 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Product from "./pages/Product";
+import Protected from "./components/Protected";
 import Cart from "./pages/Cart";
-import WishList from "./pages/WishList";
+import Product from "./pages/Product";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import { lazy, Suspense } from "react";
-import Protected from "./components/Protected";
+import WishList from "./pages/WishList";
 
 const Main = lazy(() => import("./pages/Main"));
 
@@ -13,17 +13,17 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Protected>
-        <Suspense
-          fallback={
-            <div className="h-[100vh] w-[100vw] bg-black flex justify-center items-center">
-              <p className="text-white text-3xl">⌛Loading...</p>
-            </div>
-          }
-        >
+      <Suspense
+        fallback={
+          <div className="h-[100vh] w-[100vw] bg-black flex justify-center items-center">
+            <p className="text-white text-3xl">⌛Loading...</p>
+          </div>
+        }
+      >
+        <Protected>
           <Main />
-        </Suspense>
-      </Protected>
+        </Protected>
+      </Suspense>
     ),
   },
 

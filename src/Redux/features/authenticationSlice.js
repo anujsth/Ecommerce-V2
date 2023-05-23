@@ -15,7 +15,7 @@ const authenticationSlice = createSlice({
     },
     setLoggedTrue: (state) => {
       const values = JSON.parse(localStorage.getItem("users"));
-      const matchingUser = values.find(
+      const matchingUser = values?.find(
         (item) =>
           item.userName === state.username &&
           item.password === state.userPassword

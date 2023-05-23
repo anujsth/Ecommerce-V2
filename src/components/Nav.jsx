@@ -32,7 +32,7 @@ const Nav = ({ scrolled, mainUrl, welcomeText }) => {
           <p
             className={`${
               mainUrl ? "text-white" : "text-black"
-            } font-semibold  ml-8 cursor-pointer hidden md:block`}
+            } font-semibold  ml-8 text-lg cursor-pointer hidden md:block`}
           >
             Home
           </p>

@@ -15,6 +15,7 @@ const Main = () => {
   const { products } = useSelector((state) => state.productDetail);
   const [loading, setLoading] = useState(false);
   const { username } = useSelector((state) => state.authentication);
+  const [categorySelect, setCategorySelect] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +28,10 @@ const Main = () => {
       1000
     );
   }, []);
+
+  const handleCategory = (e) => {
+    setCategorySelect(e.target.value);
+  };
 
   const handleClick = () => {
     const container = shopRef.current;
@@ -59,10 +64,31 @@ const Main = () => {
         </div>
       </div>
       <div ref={shopRef}>
-        <Shop products={products} category="men's clothing" loading={loading} />
+        <select
+          className="ml-16 md:ml-28 mt-8 font-semibold focus:text text-xl cursor-pointer text-black bg-transparent"
+          onChange={handleCategory}
+        >
+          <option value="">Category</option>
+          <option value="">All Products</option>
+          <option value="men's clothing">Men's Clothing</option>
+          <option value="jewelery">Jewelery</option>
+          <option value="electronics">Electronics</option>
+        </select>
+
+        {(categorySelect === "men's clothing" || categorySelect === "") && (
+          <Shop
+            products={products}
+            category="men's clothing"
+            loading={loading}
+          />
+        )}
+        {(categorySelect === "jewelery" || categorySelect === "") && (
+          <Shop products={products} category="jewelery" loading={loading} />
+        )}
+        {(categorySelect === "electronics" || categorySelect === "") && (
+          <Shop products={products} category="electronics" loading={loading} />
+        )}
       </div>
-      <Shop products={products} category="jewelery" loading={loading} />
-      <Shop products={products} category="electronics" loading={loading} />
     </>
   );
 };
