@@ -20,7 +20,7 @@ const ProductItem = ({
             width={"100%"}
           />
         </div>
-        <div className="w-[55%] mt-8 md:mt-12 h-full ml-[3rem] flex flex-col">
+        <div className="w-[70%] md:w-[55%] mt-8 md:mt-12 h-full md:ml-[3rem] flex flex-col">
           <p className="text-xl font-semibold lg:text-5xl text-">
             {product?.title}
           </p>
@@ -34,9 +34,7 @@ const ProductItem = ({
               {product?.rating?.count}
             </div>
           </div>
-          <div className="mt-4 w-[80%] max-[700px]:hidden md:visible">
-            {product?.description}
-          </div>
+          <div className="mt-4 w-full md:w-[80%] ">{product?.description}</div>
           <div className="flex flex-col mt-16">
             <p className="text-xl font-semibold ">Quantity</p>
             <div className="flex items-center mt-4">
@@ -62,14 +60,14 @@ const ProductItem = ({
               </div>
             </div>
           </div>
-          <div className="mt-12 pb-12 flex  items-center max-[700]:w-full justify-start">
+          <div className="mt-12 pb-12 flex w-full justify-start">
             <Link
               to="/cart"
               className=" w-[7rem] h-[2.5rem] rounded-3xl cursor-pointer bg-blue-800 flex items-center justify-center hover:bg-blue-900"
             >
               <p className="font-semibold text-center text-white">Buy Now</p>
             </Link>
-            <div className=" w-[10rem] h-[2.5rem] mr-2 rounded-3xl cursor-pointer bg-green-800 flex items-center justify-center hover:bg-green-900">
+            <div className="w-[10rem] h-[2.5rem] ml-1 mr-3 rounded-3xl cursor-pointer bg-green-800 flex items-center justify-center hover:bg-green-900">
               <p
                 className="font-semibold text-center text-white"
                 onClick={() => onClickHandler(product, itemNumber)}
