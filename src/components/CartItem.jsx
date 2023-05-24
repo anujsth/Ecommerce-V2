@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { removeCartItem } from "../Redux/features/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
+import ItemDetail from "./ItemDetail";
 
 const CartItem = ({ product, setTotalCost }) => {
   const dispatch = useDispatch();
@@ -12,27 +13,8 @@ const CartItem = ({ product, setTotalCost }) => {
   }, [product]);
   return (
     <div className="flex  mt-10">
-      <div className="w-[35%] md:w-[40%] flex flex-col lg:flex-row justify-start m-auto">
-        <img
-          src={product.image}
-          alt=""
-          className="h-full w-16 mr-3 object-contain"
-        />
-        <div className="flex flex-col">
-          <p>{product.title}</p>
-          <p className="text-red-500">{product.category}</p>
-        </div>
-      </div>
-      <div className=" w-[16%] m-auto">
-        <p className="text-center">{product.quantity}</p>
-      </div>
-      <div className="w-[16%] m-auto">
-        <p className="text-center">${product.cost}</p>
-      </div>
-      <div className="w-[16%] m-auto">
-        <p className="text-center">${product.quantity * product.cost}</p>
-      </div>
-      <div className="w-[5rem] md:w-[8%] m-auto bg-red-500 text-white rounded-lg py-1 cursor-pointer hover:scale-105">
+      <ItemDetail product={product} />
+      <div className="w-[5rem] lg:w-[8%] m-auto bg-red-500 text-white rounded-lg py-1 cursor-pointer hover:scale-105">
         <p
           className="font-semibold text-center"
           onClick={() => {

@@ -6,6 +6,7 @@ import userReducer from "./features/userSlice";
 import authenticationReducer from "./features/authenticationSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
+import ShipmentReducer from "./features/ShipmentSlice";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const store = configureStore({
     wishList: wishListReducer,
     user: userReducer,
     authentication: persistedReducer,
+    shipment: ShipmentReducer,
   },
 });
 

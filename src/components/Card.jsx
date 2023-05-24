@@ -4,27 +4,34 @@ import { useEffect, useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import { removeWishItems, setWishItems } from "../Redux/features/wishListSlice";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ product, onClick, loading }) => {
+  const { loggedIn } = useSelector((state) => state.authentication);
   const [toggle, setToggle] = useState(false);
   const dispatch = useDispatch();
   const { wishItems } = useSelector((state) => state.wishList);
+  const navigate = useNavigate();
   const cartHandler = (e) => {
     e.stopPropagation();
-    !toggle &&
-      dispatch(setWishItems(product)) &&
-      toast.success("Product added to wishlist!", {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    toggle && dispatch(removeWishItems(product));
-    setToggle(!toggle);
+    if (loggedIn) {
+      !toggle &&
+        dispatch(setWishItems(product)) &&
+        toast.success("Product added to wishlist!", {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      toggle && dispatch(removeWishItems(product));
+      setToggle(!toggle);
+    } else {
+      navigate("/signin");
+    }
   };
   useEffect(() => {
     wishItems.find((item) => {
@@ -50,8 +57,8 @@ const Card = ({ product, onClick, loading }) => {
         </p>
         <div className="flex items-center justify-between w-full px-4 mt-4 mb-4 ">
           <div className="flex flex-col items-center">
-            <p className="text-sm text-gray-200">Price</p>
-            <p className="text-lg text-white">{`$ ${product.price}`}</p>
+            <p className="text-base text-gray-200">Price</p>
+            <p className="text-lg text-white">{`Rs. ${product.price}`}</p>
           </div>
           <div className="bg-blue-600 h-[2.6rem] w-[2.6rem] rounded-full flex items-center justify-center cursor-pointer hover:scale-110 hover:bg-cyan-600   transition-all duration-250">
             {toggle ? (

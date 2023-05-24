@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { stateLoggedFalse } from "../Redux/features/authenticationSlice";
 
 const Nav = ({ scrolled, mainUrl, welcomeText }) => {
+  const { loggedIn } = useSelector((state) => state.authentication);
   const { itemQuantity } = useSelector((state) => state.cart);
   const { wishItems } = useSelector((state) => state.wishList);
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Nav = ({ scrolled, mainUrl, welcomeText }) => {
         scrolled ? "bg-black" : "bg-transparent"
       } justify-between items-center z-1 ${
         scrolled ? "sticky" : ""
-      } top-0 px-[3rem]  `}
+      } top-0 px-[3rem]`}
     >
       <div className="flex h-full justify-center items-center">
         <div className="px-[0.5rem] py-[1.5rem] md:px-[1rem] md:py-[2rem] bg-blue-400">
@@ -39,21 +40,33 @@ const Nav = ({ scrolled, mainUrl, welcomeText }) => {
         </Link>
       </div>
       <div className="flex items-center">
-        {welcomeText && (
+        {loggedIn && welcomeText && (
           <p className="text-white mr-6 hidden md:visible font-medium md:flex justify-center items-center">
-            Welcome{" "}
-            <span className="text-blue-500 ml-2 text-xl">{finalName}</span>
+            Welcome <span className="text-blue-500 ml-2">{finalName}</span>
           </p>
         )}
-        <GoSignOut
-          className={`${
-            mainUrl ? "text-white" : "text-black"
-          } text-2xl cursor-pointer text-center hover:text-red-600 hover:scale-105 transition-all`}
-          onClick={() => {
-            navigate("/signin");
-            dispatch(stateLoggedFalse());
-          }}
-        />
+        {loggedIn ? (
+          <Link
+            className={`${
+              mainUrl ? "text-white border-white" : "text-black border-black"
+            } border rounded px-2 border-white md:text-base cursor-pointer text-center hover:border-red-600 hover:text-red-600 hover:scale-105 transition-all`}
+            onClick={() => {
+              navigate("/signin");
+              dispatch(stateLoggedFalse());
+            }}
+          >
+            LOG OUT
+          </Link>
+        ) : (
+          <Link
+            to="/signin"
+            className={`${
+              mainUrl ? "text-white border-white" : "text-black border-black"
+            } border rounded px-2 border-white md:text-base cursor-pointer text-center hover:border-green-600 hover:text-green-600 hover:scale-105 transition-all`}
+          >
+            LOG IN
+          </Link>
+        )}
         <Link to="/wishlist">
           <div className="relative">
             <BsFillBagHeartFill

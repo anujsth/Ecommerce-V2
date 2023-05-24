@@ -8,11 +8,12 @@ const ProductItem = ({
   itemNumber,
   setItemNumber,
   onClickHandler,
+  loggedIn,
 }) => {
   return (
     product !== null && (
-      <div className="flex flex-col items-center md:flex-row mt-[1.5rem] md:mt-[3rem] m-auto w-[100%] md:w-[75%] h-[70vh]">
-        <div className="w-[50%] md:w-[40%] h-[100%]">
+      <div className="flex flex-col items-center md:flex-row mt-[1.5rem] md:mt-[3rem] mx-auto w-[100%] md:w-[75%] mb-[2rem]">
+        <div className="w-[50%] md:w-[40%] md:h-[25rem] ">
           <img
             src={product?.image}
             alt=""
@@ -42,7 +43,7 @@ const ProductItem = ({
                 <AiOutlineMinus
                   className="text-3xl"
                   onClick={() => {
-                    if (itemNumber > 0) {
+                    if (itemNumber > 1) {
                       let val = itemNumber - 1;
                       setItemNumber(val);
                     }
@@ -61,12 +62,14 @@ const ProductItem = ({
             </div>
           </div>
           <div className="mt-12 pb-12 flex w-full justify-start">
-            <Link
-              to="/cart"
-              className=" w-[7rem] h-[2.5rem] rounded-3xl cursor-pointer bg-blue-800 flex items-center justify-center hover:bg-blue-900"
-            >
-              <p className="font-semibold text-center text-white">Buy Now</p>
-            </Link>
+            {
+              <Link
+                to={`${loggedIn ? "/cart" : "/signin"}`}
+                className=" w-[7rem] h-[2.5rem] rounded-3xl cursor-pointer bg-blue-800 flex items-center justify-center hover:bg-blue-900"
+              >
+                <p className="font-semibold text-center text-white">Buy Now</p>
+              </Link>
+            }
             <div className="w-[10rem] h-[2.5rem] ml-1 mr-3 rounded-3xl cursor-pointer bg-green-800 flex items-center justify-center hover:bg-green-900">
               <p
                 className="font-semibold text-center text-white"

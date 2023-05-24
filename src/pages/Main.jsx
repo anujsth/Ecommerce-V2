@@ -6,6 +6,7 @@ import "../assets/styles/style.css";
 import LandingPage from "../components/LandingPage";
 import Nav from "../components/Nav";
 import Shop from "./Shop";
+import Footer from "../components/Footer";
 
 const Main = () => {
   const shopRef = useRef();
@@ -89,6 +90,7 @@ const Main = () => {
           <Shop products={products} category="electronics" loading={loading} />
         )}
       </div>
+      <Footer />
     </>
   );
 };

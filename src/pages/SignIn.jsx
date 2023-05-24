@@ -46,7 +46,7 @@ const SignIn = () => {
 
   return (
     <div className="relative flex flex-col items-center signinImage ">
-      <div className=" bg-black bg-opacity-80 h-[41.25rem] w-[30.688rem] mt-[10rem]">
+      <div className=" bg-black bg-opacity-80 h-[41.25rem] sm:w-[30.688rem] mt-[10rem]">
         <form
           action=""
           className="flex flex-col mt-[60px] mx-[68px]"

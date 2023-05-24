@@ -16,14 +16,20 @@ const cartSlice = createSlice({
     setItemCart: (state, action) => {
       state.val = state.cartItems.find((item) => item.id === action.payload.id);
 
-      if (!state.val) state.cartItems = [...state.cartItems, action.payload];
-      if (state.val) {
-        console.log(state.currentItem);
+      if (!state.val) {
+        state.cartItems = [...state.cartItems, action.payload];
+      } else {
+        const itemIndex = state.cartItems.findIndex(
+          (item) => item.id === action.payload.id
+        );
+
+        state.cartItems[itemIndex].quantity += action.payload.quantity;
       }
     },
+
     setCartQuantity: (state, action) => {
       state.cartQuantity = action.payload;
-      if (!state.val) state.itemQuantity += state.cartQuantity;
+      state.itemQuantity += state.cartQuantity;
     },
     removeCartItem: (state, action) => {
       state.itemQuantity -= action.payload.quantity;

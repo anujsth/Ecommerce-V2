@@ -6,6 +6,7 @@ import Product from "./pages/Product";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import WishList from "./pages/WishList";
+import CheckOut from "./pages/CheckOut";
 
 const Main = lazy(() => import("./pages/Main"));
 
@@ -20,22 +21,25 @@ export const router = createBrowserRouter([
           </div>
         }
       >
-        <Protected>
-          <Main />
-        </Protected>
+        <Main />
+        {/* <Protected>
+        </Protected> */}
       </Suspense>
     ),
   },
 
   {
     path: "/product/:id",
+    element: <Product />,
+  },
+  {
+    path: "/cart",
     element: (
       <Protected>
-        <Product />
+        <Cart />
       </Protected>
     ),
   },
-  { path: "/cart", element: <Cart /> },
   {
     path: "/wishlist",
     element: (
@@ -52,4 +56,5 @@ export const router = createBrowserRouter([
     path: "/signup",
     element: <SignUp />,
   },
+  { path: "/checkout", element: <CheckOut /> },
 ]);
