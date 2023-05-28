@@ -4,14 +4,18 @@ const productDetailSlice = createSlice({
   name: "productDetail",
   initialState: {
     products: null,
+    selectedCategory: null,
   },
   reducers: {
     fetchAllData: (state, action) => {
       state.products = action.payload;
-      console.log(state.products);
+    },
+    setSelectedCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+      console.log(state.selectedCategory);
     },
   },
 });
 
 export default productDetailSlice.reducer;
-export const { fetchAllData } = productDetailSlice.actions;
+export const { fetchAllData, setSelectedCategory } = productDetailSlice.actions;

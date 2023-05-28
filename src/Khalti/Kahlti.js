@@ -1,20 +1,23 @@
 import React from "react";
 import KhaltiCheckout from "khalti-checkout-web";
 import config from "./khaltiConfig";
+import khalti from "../assets/images/khalti.png";
 
 const Kahlti = ({ total }) => {
   let checkout = new KhaltiCheckout(config);
   console.log(total);
   return (
     <div
-      className="cursor-pointer mt-12 m-auto w-[10rem] rounded bg-blue-700 py-2.5"
       onClick={() => {
         total !== 0
           ? checkout.show({ amount: (total * 100).toFixed() })
           : alert("Your cart is empty");
       }}
     >
-      <p className="text-center text-xl text-white">CHECK OUT</p>
+      <img
+        src={khalti}
+        className="h-[6rem] w-[14rem] lg:h-[9rem] lg:w-[18rem] hover:scale-110 transition-all cursor-pointer"
+      />
     </div>
   );
 };

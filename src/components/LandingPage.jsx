@@ -2,7 +2,7 @@ import React from "react";
 
 const LandingPage = ({ scrollFunc }) => {
   return (
-    <div className="mt-[10rem] flex justify-between items-start">
+    <div className="pt-[10rem] flex justify-between items-start">
       <div className="flex flex-col text-white w-[40%] pl-[1rem] md:pl-[9rem]">
         <p className="text-3xl max-[1200px]:mt-[14rem] xl:text-6xl ">
           A gentleman is simply a patient wolf

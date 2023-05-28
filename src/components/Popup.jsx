@@ -70,11 +70,6 @@ const Popup = ({ toggleModal }) => {
               className="bg-transparent w-[25rem] py-2 px-4 border rounded border-gray-400"
             />
             <p className="mb-2">Province</p>
-            {/* <input
-              type="text"
-              name="province"
-              className="bg-transparent w-[25rem] py-2 px-4 border rounded border-gray-400"
-            /> */}
             <select
               required
               className="bg-transparent w-[25rem] py-2 px-4 border rounded border-gray-400"
@@ -85,7 +80,11 @@ const Popup = ({ toggleModal }) => {
               }}
             >
               {province.provinces.map((item) => {
-                return <option value={item.name}>{item.name}</option>;
+                return (
+                  <option value={item.name} key={item.id}>
+                    {item.name}
+                  </option>
+                );
               })}
             </select>
             <p className="mb-2">City</p>

@@ -42,6 +42,12 @@ const cartSlice = createSlice({
       console.log(state.totalCostCart);
       state.totalCostCart = action.payload;
     },
+    resetCart: (state, action) => {
+      state.itemQuantity = 0;
+      state.cartItems = [];
+      state.cartQuantity = 0;
+      state.totalCostCart = "";
+    },
   },
 });
 
@@ -52,4 +58,5 @@ export const {
   setCartQuantity,
   removeCartItem,
   setTotalCostCart,
+  resetCart,
 } = cartSlice.actions;

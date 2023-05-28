@@ -7,6 +7,8 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import WishList from "./pages/WishList";
 import CheckOut from "./pages/CheckOut";
+import Payment from "pages/Payment";
+import Cod from "pages/Cod";
 
 const Main = lazy(() => import("./pages/Main"));
 
@@ -57,4 +59,6 @@ export const router = createBrowserRouter([
     element: <SignUp />,
   },
   { path: "/checkout", element: <CheckOut /> },
+  { path: "/payment", element: <Payment /> },
+  { path: "/cod", element: <Cod /> },
 ]);

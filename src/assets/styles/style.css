@@ -6,31 +6,8 @@
 
 .main-page {
   background-image: url("../images/2.jpg");
-  height: 100vh;
+  height: 87vh;
   width: 100%;
   background-size: cover;
   background-position: center;
-}
-
-.category {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.category::after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  right: 0;
-  bottom: -9px;
-  height: 4px;
-  background-color: rgb(10, 117, 189);
-  transform-origin: bottom;
-  transition: transform 1s ease-in-out;
-  transform: scaleX(1.1);
-}
-
-.category:hover::after {
-  transform: scaleX(1.4);
 }

@@ -57,7 +57,7 @@ const WishListItem = ({ product }) => {
       </div>
       <div className=" w-[16%] m-auto">{product.quantity}</div>
       <div className="w-[16%] m-auto">${product.price}</div>
-      <div className="flex flex-col md:flex-row ml-4 mr-2">
+      <div className="flex flex-col md:flex-row ml-4 mr-2 md:gap-x-2">
         <div
           className={`w-[6rem] ml-4 md:w-[8rem] m-auto ${
             toggle ? "bg-green-600" : "bg-blue-500"
@@ -69,7 +69,7 @@ const WishListItem = ({ product }) => {
           </p>
         </div>
         <div
-          className={`w-[6rem] ml-4 md:w-[8rem] m-auto bg-red-600
+          className={` w-[6rem]  md:w-[8rem] m-auto bg-red-600
         } text-white rounded-lg py-1 cursor-pointer hover:scale-105`}
           onClick={() => {
             dispatch(removeWishItems(product));

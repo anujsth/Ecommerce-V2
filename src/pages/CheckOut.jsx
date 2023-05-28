@@ -8,8 +8,10 @@ import { TbDiscount2 } from "react-icons/tb";
 import { useState } from "react";
 import Popup from "components/Popup";
 import "assets/styles/modal.css";
+import { useNavigate } from "react-router-dom";
 
 const CheckOut = () => {
+  const navigate = useNavigate();
   const { detail } = useSelector((state) => state.shipment);
   const { username } = useSelector((state) => state.authentication);
   const { cartItems, totalCostCart } = useSelector((state) => state.cart);
@@ -130,9 +132,17 @@ const CheckOut = () => {
             </div>
             <p className="text-end text-gray-600">All taxes included</p>
           </div>
-          <div className="cursor-pointer m-auto w-full rounded bg-blue-900 py-2.5">
-            <p className="text-center text-xl text-white">CHECK OUT</p>
-          </div>
+          {detail !== null && (
+            <div
+              onClick={() => {
+                const val = totalCostCart + 65;
+                navigate("/payment", { state: val });
+              }}
+              className="cursor-pointer m-auto w-full rounded bg-blue-900 py-2.5"
+            >
+              <p className="text-center text-xl text-white">CHECK OUT</p>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

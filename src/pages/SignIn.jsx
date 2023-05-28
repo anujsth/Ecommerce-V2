@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {
+  removeError,
   setLoggedTrue,
   setUserAuth,
 } from "../Redux/features/authenticationSlice";
@@ -18,6 +19,7 @@ const SignIn = () => {
   });
 
   const inputUserHandler = (event) => {
+    dispatch(removeError());
     setSignInDetail({
       ...signInDetail,
       userameOrEmail: `${event.target.value}`,

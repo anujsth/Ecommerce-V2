@@ -49,7 +49,7 @@ const Card = ({ product, onClick, loading }) => {
       <img
         src={product.image}
         alt=""
-        className="h-[70%] fill w-full object-contain border rounded-lg border-transparent"
+        className="h-[70%] fill w-full object-contain border rounded-lg border-transparent hover:scale"
       />
       <div className="w-full bg-[#152238] rounded-xl flex flex-col items-center shadow-md group-hover:shadow-xl group-hover:shadow-gray-500 shadow-gray-900 transition-all">
         <p className="mt-2 text-xl font-semibold text-white">

@@ -31,9 +31,12 @@ const authenticationSlice = createSlice({
     stateLoggedFalse: (state) => {
       state.loggedIn = false;
     },
+    removeError: (state) => {
+      state.error = null;
+    },
   },
 });
 
-export const { setUserAuth, setLoggedTrue, stateLoggedFalse } =
+export const { setUserAuth, setLoggedTrue, stateLoggedFalse, removeError } =
   authenticationSlice.actions;
 export default authenticationSlice.reducer;

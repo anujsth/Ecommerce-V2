@@ -2,7 +2,7 @@ const ItemDetail = ({ product }) => {
   return (
     <>
       {" "}
-      <div className="w-[35%] md:w-[40%] flex flex-col lg:flex-row justify-start m-auto">
+      <div className="w-[30%] md:w-[40%] flex flex-col lg:flex-row justify-start m-auto">
         <img
           src={product.image}
           alt=""

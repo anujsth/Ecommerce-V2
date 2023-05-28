@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { FaSkullCrossbones } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Kahlti from "../Khalti/Kahlti";
 import { setTotalCostCart } from "../Redux/features/cartSlice";
 import CartItem from "../components/CartItem";
 import Nav from "../components/Nav";
@@ -36,7 +34,7 @@ const Cart = () => {
               {itemQuantity} Items
             </p>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 mb-6">
             <div className="flex ">
               <p className="text-gray-500 text-center w-[35%] lg:w-[40%] lg:border-r-2 md:border-black m-auto">
                 PRODUCT DETAILS
@@ -70,7 +68,7 @@ const Cart = () => {
             )}
           </div>
         </div>
-        <div className="h-[100vh] md:w-[40%] mt-6 md:mt-0 bg-[#152238]">
+        <div className="rounded-t-xl md:w-[40%] mt-6 md:mt-0 bg-[#1d3052] pb-24 lg:pb-32">
           <div className="flex flex-col pb-8 mx-12 mt-20 border-b-2 border-gray-500">
             <div className="pb-8 border-b-2 border-gray-500">
               <p className="text-3xl text-white text-medium">ORDER SUMMARY</p>
@@ -107,12 +105,6 @@ const Cart = () => {
             </div>
           )}
         </div>
-        <Link
-          to="/"
-          className="absolute bottom-16 left-12 md:left-20 flex text-4xl text-gray-500 mr-2 hover:text-green-600  hover:scale-110 transition-all"
-        >
-          <BsFillArrowLeftCircleFill className="" />
-        </Link>
       </div>
       <Footer />
     </>
