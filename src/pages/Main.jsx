@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import LandingPage from "../components/LandingPage";
 import Nav from "../components/Nav";
 import Shop from "./Shop";
+import { ImCross } from "react-icons/im";
 
 const Main = () => {
   const shopRef = useRef();
@@ -25,6 +26,7 @@ const Main = () => {
   const [categorySelect, setCategorySelect] = useState(
     selectedCategory ? selectedCategory : ""
   );
+  const [suggestionToggle, setSuggestionToggle] = useState(false);
   const [navbarHeight, setNavbarHeight] = useState(null);
   useEffect(() => {
     setLoading(true);
@@ -93,7 +95,7 @@ const Main = () => {
         </div>
       </div>
       <div ref={shopRef}>
-        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center ">
           <select
             className="ml-8 md:ml-28 mt-8 font-semibold focus:text text-xl cursor-pointer text-black bg-transparent"
             onChange={handleCategory}
@@ -104,14 +106,52 @@ const Main = () => {
             <option value="jewelery">Jewelery</option>
             <option value="electronics">Electronics</option>
           </select>
+          <div className="flex justify-center mr-16 ">
+            <div className="flex flex-col z-5 relative">
+              <input
+                type="text"
+                value={search}
+                className="w-[12rem] mt-8 ml-20 md:ml-0 border rounded px-4 py-1 "
+                placeholder="Search..."
+                onChange={(e) => {
+                  setSearch(e.target.value.toLowerCase());
+                  setSuggestionToggle(true);
+                }}
+              />
 
-          <div>
-            <input
-              type="text"
-              className="mr-20 w-[12rem] mt-8 ml-20 md:ml-0 border rounded px-4 py-1"
-              placeholder="Search..."
-              onChange={(e) => setSearch(e.target.value.toLowerCase())}
-            />
+              {search && suggestionToggle ? (
+                <div className="z-10 absolute ml-20 md:ml-0 mt-[4.5rem] w-[12rem] bg-white border rounded shadow-lg cursor-pointer ">
+                  {products.map((item) => {
+                    if (
+                      item.title.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return (
+                        <p
+                          className="border-b-2 hover:text-blue-600"
+                          onClick={() => {
+                            setSearch(item.title.toLowerCase());
+
+                            setSuggestionToggle(false);
+                          }}
+                        >
+                          {item.title.slice(0, 15)}
+                        </p>
+                      );
+                    }
+                  })}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+            {search && (
+              <ImCross
+                className="ml-4 mt-10 hover:cursor-pointer hover:text-red-600"
+                onClick={() => {
+                  setSearch("");
+                }}
+              />
+            )}
           </div>
         </div>
 

@@ -29,7 +29,7 @@ const Nav = ({ scrolled, mainUrl, welcomeText, setNavbarHeight }) => {
       ref={navbarRef}
       className={`flex ${
         scrolled ? "bg-black" : mainUrl ? "bg-black" : "bg-white"
-      } justify-between items-center z-1 ${
+      } justify-between items-center z-20 relative ${
         scrolled ? "sticky" : ""
       } top-0 px-[3rem]`}
     >
@@ -93,7 +93,7 @@ const Nav = ({ scrolled, mainUrl, welcomeText, setNavbarHeight }) => {
             <BsFillBagHeartFill
               className={`${
                 mainUrl ? "text-white" : "text-black"
-              } text-2xl ml-8 cursor-pointer hover:scale-105 hover:text-green-600 transition-all`}
+              } text-2xl ml-5 md:ml-8 cursor-pointer hover:scale-105 hover:text-green-600 transition-all`}
             />
             <div className="absolute top-0 right-0 -mt-3 -mr-4">
               <span className="bg-red-400 text-white px-[0.4rem]  text-sm rounded-full">
@@ -107,7 +107,7 @@ const Nav = ({ scrolled, mainUrl, welcomeText, setNavbarHeight }) => {
           <AiOutlineShoppingCart
             className={`${
               mainUrl ? "text-white" : "text-black"
-            } text-2xl ml-8 cursor-pointer hover:scale-105 hover:text-blue-400 transition-all`}
+            } text-2xl ml-5 md:ml-8 cursor-pointer hover:scale-105 hover:text-blue-400 transition-all`}
           />
           <div class="absolute top-0 right-0 -mt-3 -mr-4">
             <span
