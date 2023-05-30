@@ -11,6 +11,7 @@ import LandingPage from "../components/LandingPage";
 import Nav from "../components/Nav";
 import Shop from "./Shop";
 import { ImCross } from "react-icons/im";
+import axios from "axios";
 
 const Main = () => {
   const shopRef = useRef();
@@ -28,6 +29,7 @@ const Main = () => {
   );
   const [suggestionToggle, setSuggestionToggle] = useState(false);
   const [navbarHeight, setNavbarHeight] = useState(null);
+  const [searchData, setSearchData] = useState([]);
   useEffect(() => {
     setLoading(true);
     setTimeout(
@@ -36,7 +38,7 @@ const Main = () => {
           dispatch(fetchAllData(res.data));
           setLoading(false);
         }),
-      1000
+      500
     );
   }, []);
   const handleCategory = (e) => {
@@ -80,6 +82,25 @@ const Main = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const getData = setTimeout(() => {
+      Axios.get("").then(({ data }) => {
+        setSearchData(
+          data.filter((item) => {
+            if (
+              item?.title?.toLowerCase().includes(search?.toLowerCase()) &&
+              search !== ""
+            ) {
+              return item;
+            }
+          })
+        );
+      });
+      setSearchData([]);
+    }, 1000);
+    return () => clearTimeout(getData);
+  }, [search]);
+
   return (
     <>
       <Nav
@@ -111,22 +132,24 @@ const Main = () => {
               <input
                 type="text"
                 value={search}
-                className="w-[12rem] mt-8 ml-20 md:ml-0 border rounded px-4 py-1 "
+                className="w-[20rem] mt-8 ml-20 md:ml-0 border border-gray-400 rounded px-4 py-1 "
                 placeholder="Search..."
                 onChange={(e) => {
-                  setSearch(e.target.value.toLowerCase());
-                  setSuggestionToggle(true);
+                  {
+                    setSearch(e.target.value);
+                    setSearchData([]);
+                    setSuggestionToggle(true);
+                  }
                 }}
               />
 
               {search && suggestionToggle ? (
-                <div className="z-10 absolute ml-20 md:ml-0 mt-[4.5rem] w-[12rem] bg-white border rounded shadow-lg cursor-pointer ">
-                  {products.map((item) => {
-                    if (
-                      item.title.toLowerCase().includes(search.toLowerCase())
-                    ) {
+                <div className="z-10 absolute ml-20 md:ml-0 mt-[4.5rem] w-[20rem] bg-white border  rounded shadow-lg cursor-pointer ">
+                  {searchData.map((item) => {
+                    {
                       return (
                         <p
+                          key={item.id}
                           className="border-b-2 hover:text-blue-600"
                           onClick={() => {
                             setSearch(item.title.toLowerCase());
@@ -134,7 +157,7 @@ const Main = () => {
                             setSuggestionToggle(false);
                           }}
                         >
-                          {item.title.slice(0, 15)}
+                          {item.title}
                         </p>
                       );
                     }

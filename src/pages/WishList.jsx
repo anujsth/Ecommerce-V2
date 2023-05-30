@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Nav from "../components/Nav";
 import WishListItem from "../components/WishListItem";
-import { FaSkullCrossbones } from "react-icons/fa";
+import { GiCrossMark } from "react-icons/gi";
 import Footer from "../components/Footer";
 
 const WishList = () => {
@@ -14,7 +14,7 @@ const WishList = () => {
         <div className="md:mt-16 w-full md:w-[60%] ">
           {wishItems.length === 0 ? (
             <div className="flex justify-center items-center mt-16">
-              <FaSkullCrossbones className="text-red-500 text-4xl mr-4" />
+              <GiCrossMark className="text-red-500 text-4xl mr-4" />
               <p className="text-red-500 text-4xl">Wish List is Empty</p>
             </div>
           ) : (

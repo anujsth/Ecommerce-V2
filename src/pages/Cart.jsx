@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { FaSkullCrossbones } from "react-icons/fa";
+import { TbShoppingCartX } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setTotalCostCart } from "../Redux/features/cartSlice";
 import CartItem from "../components/CartItem";
 import Nav from "../components/Nav";
@@ -52,7 +52,7 @@ const Cart = () => {
             </div>
             {cartItems.length === 0 ? (
               <div className="flex justify-center items-center mt-16 h-[30vh] mb-24">
-                <FaSkullCrossbones className="mr-4 text-4xl text-red-500" />
+                <TbShoppingCartX className="mr-4 text-4xl text-red-500" />
                 <p className="text-4xl text-red-500">Cart is Empty</p>
               </div>
             ) : (

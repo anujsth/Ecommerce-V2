@@ -71,14 +71,17 @@ const Popup = ({ toggleModal }) => {
             />
             <p className="mb-2">Province</p>
             <select
-              required
               className="bg-transparent w-[25rem] py-2 px-4 border rounded border-gray-400"
               name="province"
+              required
               onChange={(e) => {
                 selectHandler(e);
                 handleDetail(e);
               }}
             >
+              <option value="" disabled selected>
+                Select Province
+              </option>
               {province.provinces.map((item) => {
                 return (
                   <option value={item.name} key={item.id}>
@@ -89,14 +92,17 @@ const Popup = ({ toggleModal }) => {
             </select>
             <p className="mb-2">City</p>
             <select
-              required
               className={`bg-transparent w-[25rem] py-2 px-4 border rounded border-gray-400 ${
                 selectInfo !== null ? "cursor-pointer" : "cursor-not-allowed"
               }`}
+              required
               name="city"
               disabled={selectInfo !== null ? false : true}
               onChange={handleDetail}
             >
+              <option value="" disabled selected>
+                Select City
+              </option>
               {selectedProvince?.districts?.map((item) => {
                 return <option value={item}>{item}</option>;
               })}
@@ -141,6 +147,7 @@ const Popup = ({ toggleModal }) => {
             <div className="w-full flex justify-end mt-3">
               <button
                 type="submit"
+                value="submit"
                 className="text-end px-6 py-2 rounded-md bg-blue-800 text-white"
               >
                 SAVE
